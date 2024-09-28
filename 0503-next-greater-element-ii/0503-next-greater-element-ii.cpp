@@ -3,7 +3,7 @@ class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
          int n = nums.size();
-        vector<int> ans(n);
+        vector<int> ans;
 
         stack<int> st;
        
