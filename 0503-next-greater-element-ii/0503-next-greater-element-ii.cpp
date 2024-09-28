@@ -3,7 +3,7 @@ class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
          int n = nums.size();
-        vector<int> ans;
+        vector<int> ans(n);
 
         stack<int> st;
        
@@ -12,7 +12,7 @@ public:
                 st.pop();
             }
             if(i<n){
-                ans[i%n]=st.empty()?-1:st.top();
+                ans[i]=st.empty()?-1:st.top();
            
                  }
                  st.push(nums[i%n]);            
