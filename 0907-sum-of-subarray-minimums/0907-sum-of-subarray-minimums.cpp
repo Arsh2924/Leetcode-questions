@@ -24,7 +24,7 @@ class Solution {
         vector<int> ans(n);
         for(int i=0;i<n;i++){
             int ch = arr[i];
-            while(!st.empty() && arr[st.top()]>ch){
+            while(!st.empty() && arr[st.top()]>=ch){
                 st.pop();
             }
             if(st.empty()){
