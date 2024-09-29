@@ -6,7 +6,7 @@ class Solution {
         vector<int> ans(n);
         for(int i=n-1;i>=0;i--){
             int ch = arr[i];
-            while(!st.empty() && arr[st.top()]>ch){
+            while(!st.empty() && arr[st.top()]>=ch){
                 st.pop();
             }
             if(st.empty()){
