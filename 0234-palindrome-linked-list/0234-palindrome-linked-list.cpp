@@ -9,58 +9,54 @@
  * };
  */
 class Solution {
-private:
-    // Function to find the middle of the list
-    ListNode* findMiddle(ListNode* head) {
+    private:
+    ListNode* midelement(ListNode* head){
         ListNode* slow = head;
-        ListNode* fast = head;
-        while (fast != nullptr && fast->next != nullptr) {
+        ListNode* fast = head->next;
+        while(fast!=NULL && fast->next!=NULL){
+            fast=fast->next;
+            if(fast!=NULL){
+                fast=fast->next;
+            }
             slow = slow->next;
-            fast = fast->next->next;
         }
         return slow;
     }
 
-    // Function to reverse the list
-    ListNode* reverseList(ListNode* head) {
-        ListNode* prev = nullptr;
+
+    ListNode* reverse(ListNode* head){
+        ListNode* prev = NULL;
         ListNode* curr = head;
-        while (curr != nullptr) {
-            ListNode* next = curr->next;
+        ListNode* next = NULL;
+
+        while(curr!=NULL){
+            next = curr->next;
             curr->next = prev;
             prev = curr;
-            curr = next;
+            curr=next;
         }
         return prev;
     }
-
 public:
     bool isPalindrome(ListNode* head) {
-        // Edge case: empty or single element list
-        if (head == nullptr || head->next == nullptr) {
+        if(head==NULL){
             return true;
         }
+    ListNode* middle = midelement(head);
+    ListNode* temp = middle->next;
+    middle->next = reverse(temp);
+    ListNode* head1 = head;
+    ListNode* head2 = middle->next;
 
-        // Step 1: Find the middle of the list
-        ListNode* middle = findMiddle(head);
-
-        // Step 2: Reverse the second half of the list
-        ListNode* reversedSecondHalf = reverseList(middle);
-
-        // Step 3: Compare the two halves
-        ListNode* firstHalf = head;
-        ListNode* secondHalf = reversedSecondHalf;
-        while (secondHalf != nullptr) {
-            if (firstHalf->val != secondHalf->val) {
-                return false;
-            }
-            firstHalf = firstHalf->next;
-            secondHalf = secondHalf->next;
+    while(head2!=NULL){
+        if(head2->val!=head1->val){
+            return false;
         }
+        head1 = head1->next;
+        head2=head2->next;
+    }
 
-        // Step 4: Optional - Restore the reversed second half (if required)
-        // middle->next = reverseList(reversedSecondHalf);
+    return true;
 
-        return true;
     }
 };
