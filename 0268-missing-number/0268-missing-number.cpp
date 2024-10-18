@@ -2,14 +2,23 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         int n = nums.size();
-        // Calculate the expected sum from 0 to n
-        int expected_sum = (n * (n + 1)) / 2;
-        // Calculate the actual sum of the elements in the array
-        int actual_sum = 0;
-        for (int num : nums) {
-            actual_sum += num;
+        
+        // Initialize a hash vector of size n+1, filled with 0s
+        vector<int> hash(n + 1, 0);
+        
+        // Mark presence of each number in nums by setting hash[nums[i]] to 1
+        for (int i = 0; i < n; i++) {
+            hash[nums[i]] = 1;
         }
-        // The difference between the expected sum and the actual sum is the missing number
-        return expected_sum - actual_sum;
+        
+        // Find the missing number by checking for a 0 in the hash array
+        for (int i = 0; i <= n; i++) {
+            if (hash[i] == 0) {
+                return i; // Missing number
+            }
+        }
+        
+        return -1; // Safeguard, should not reach here
     }
 };
+
