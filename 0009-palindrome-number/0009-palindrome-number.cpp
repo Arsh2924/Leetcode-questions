@@ -1,36 +1,26 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        if(x<0){
+        // Negative numbers are not palindromes
+        if (x < 0) {
             return false;
         }
-         int revNum = 0;
-    // Create a duplicate variable to
-    // store the original number
-    int dup = x;
-    // Iterate through each digit of
-    // the number until it becomes 0
-    while (x != 0) {
-        // Extract the last
-        // digit of the number
-        int ld = x % 10;
-        // Build the reverse number
-        // by appending the last digit
-        revNum = (revNum * 10) + ld;
-        // Remove the last digit
-        // from the original number
-        x = x / 10;
-    }
-    // Check if the original number
-    // is equal to its reverse
-    if (dup == revNum) {
-        // If equal, return true
-        // indicating it's a palindrome
-        return true;
-    } else {
-        // If not equal, return false
-        // indicating it's not a palindrome
-        return false;
-    }
+        
+        int revNum = 0;
+        int dup = x; // Store original number
+
+        while (x != 0) {
+            int ld = x % 10; // Extract the last digit
+
+            // Check for overflow before updating revNum
+            if (revNum > INT_MAX / 10 || (revNum == INT_MAX / 10 && ld > 7)) {
+                return false; // Overflow occurred, cannot be a palindrome
+            }
+
+            revNum = (revNum * 10) + ld; // Build the reversed number
+            x = x / 10; // Remove the last digit
+        }
+
+        return dup == revNum; // Check if the original number matches its reverse
     }
 };
