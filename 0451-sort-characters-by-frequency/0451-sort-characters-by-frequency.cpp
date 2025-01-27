@@ -16,7 +16,7 @@ public:
         }
         
         // Sort the vector in descending order of frequency
-        sort(freqVec.rbegin(), freqVec.rend());
+        sort(freqVec.begin(), freqVec.end());
         
         // Build the result string
         string result = "";
