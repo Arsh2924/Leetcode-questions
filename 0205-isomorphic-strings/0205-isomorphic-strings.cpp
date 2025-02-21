@@ -9,12 +9,12 @@ public:
         for(int i =0;i<s.length();i++){
             char stp = s[i];
             char  ttp = t[i];
-                if(!st[stp]){
-                    st[stp]=ttp;
-                }
-                if(!tt[ttp]){
-                    tt[ttp]=stp;
-                }
+                if (st.count(stp) == 0) {
+                st[stp] = ttp;
+            }
+            if (tt.count(ttp) == 0) {
+                tt[ttp] = stp;
+            }
                 if(st[stp]!=ttp || tt[ttp]!=stp){
                     return false;
                 }
