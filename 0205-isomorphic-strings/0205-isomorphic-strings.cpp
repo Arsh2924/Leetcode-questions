@@ -12,10 +12,10 @@ public:
                 if(!st[stp]){
                     st[stp]=ttp;
                 }
-                if(!st[ttp]){
-                    st[ttp]=stp;
+                if(!tt[ttp]){
+                    tt[ttp]=stp;
                 }
-                if(st[stp]!=ttp || st[ttp]!=stp){
+                if(st[stp]!=ttp || tt[ttp]!=stp){
                     return false;
                 }
 
