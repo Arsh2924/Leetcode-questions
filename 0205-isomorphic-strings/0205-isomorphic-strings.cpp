@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        map<char,char> st;
-        map<char,char> tt;
+        map<char,char> st; // also use array int sss[128] = {-1}
+        map<char,char> tt;// " same above "  by using it code beats more
         if(s.length()!=t.length()){
             return false;
         }
