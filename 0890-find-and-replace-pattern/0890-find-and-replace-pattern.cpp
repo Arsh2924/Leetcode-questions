@@ -1,6 +1,6 @@
 class Solution {
     public:
-    bool matches(string word,string pattern){
+    bool matches(string &word,string pattern){
         if(word.length()!=pattern.length()){
             return false;
         }
@@ -25,7 +25,7 @@ class Solution {
 public:
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
          vector<string> result;
-        for (const string word : words) {
+        for (string word : words) {
             if (matches(word, pattern)) {
                 result.push_back(word);
             }
