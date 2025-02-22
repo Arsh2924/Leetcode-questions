@@ -25,7 +25,7 @@ class Solution {
 public:
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
          vector<string> result;
-        for (const string& word : words) {
+        for (const string word : words) {
             if (matches(word, pattern)) {
                 result.push_back(word);
             }
