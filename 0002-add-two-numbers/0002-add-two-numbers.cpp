@@ -25,20 +25,6 @@ private:
         }
     }
 
-    // Function to reverse the nodes of a linked list
-    ListNode* reverse(ListNode* head) {
-        ListNode* curr = head;
-        ListNode* prev = NULL;
-        ListNode* next = NULL;
-        while (curr != NULL) {
-            next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
-    }
-
     // Function to add two numbers represented by two linked lists
     ListNode* add(ListNode* first, ListNode* second) {
         int carry = 0;
@@ -69,16 +55,10 @@ private:
 
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        // Step 1 - Reverse the input linked lists
-        l1 = reverse(l1);
-        l2 = reverse(l2);
-
-        // Step 2 - Add the two reversed linked lists
+        // Step 1 - Add the two linked lists
         ListNode* ans = add(l1, l2);
 
-        // Step 3 - Reverse the result to get the final answer
-       // ans = reverse(ans);
-
+        // Step 2 - Return the result as is, no need for reversing the output
         return ans;
     }
 };
